@@ -1,4 +1,4 @@
-const port = 4000;
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -11,8 +11,13 @@ const { runInNewContext } = require("vm");
 app.use(express.json());
 app.use(cors());
 
+require('dotenv').config();
+
+const port=process.env.PORT;
+const Url=process.env.URL;
+
 app.listen(port, (error) => {
-  if (!error) {
+  if (!error) { 
     console.log("Server runing on " + port);
   } else {
     console.log("ERROR: " + error);
@@ -25,7 +30,7 @@ app.get("/", (req, res) => {
 
 // Database connectivity with mongodb
 mongoose.connect(
-  "mongodb+srv://prahladsinghmehta:22052002@ecommerce.lzd1a.mongodb.net/"
+  Url
 );
 
 // Image storage
