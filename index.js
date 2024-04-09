@@ -6,8 +6,8 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const { runInNewContext } = require("vm");
-
+const { runInNewContext } = require("vm"); 
+ 
 app.use(express.json());
 app.use(cors());
 
@@ -25,7 +25,14 @@ app.listen(port, (error) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Express is runing");
+
+  try{
+    res.send("Express is runing");
+
+  }catch(e){
+    res.send("Something went wrong"); 
+  }
+
 });
 
 // Database connectivity with mongodb
